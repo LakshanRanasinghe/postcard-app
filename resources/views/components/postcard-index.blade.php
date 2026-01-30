@@ -72,8 +72,10 @@ new class extends Component {
 
             <h1 class="font-display text-3xl md:text-4xl font-bold text-black leading-[1.1] mb-6 tracking-tight animate-fade-up"
                 style="animation-delay: 500ms">
-                Kies jouw kaart en ontvang deze na een door jou gewenste periode
+                Stuur jezelf een handige reminder
             </h1>
+            <span class="text-lg text-gray-700 max-w-lg mx-auto leading-relaxed animate-fade-up"
+                style="animation-delay: 700ms">Zo krijg je overzicht en check je of je niets vergeet</span>
 
             {{-- Decorative element --}}
             <div
