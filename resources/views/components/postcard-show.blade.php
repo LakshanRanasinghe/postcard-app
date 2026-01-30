@@ -10,6 +10,7 @@ new class extends Component {
     public $email;
     public $message;
     public $duration = '1 maand';
+    public $consent = false;
     public $submitted = false;
 
     public function mount($id)
@@ -21,9 +22,9 @@ new class extends Component {
     {
         $cards = [
             1 => 'images/option-1.png',
-            2 => 'images/option-2.jpeg',
-            3 => 'images/option-3.jpeg',
-            4 => 'images/option-4.jpeg',
+            2 => 'images/option-2.png',
+            3 => 'images/option-3.png',
+            4 => 'images/option-4.png',
         ];
 
         return $cards[$this->cardId] ?? 'images/option-1.png';
@@ -36,6 +37,7 @@ new class extends Component {
             'email' => 'required|email',
             'message' => 'required',
             'duration' => 'required',
+            'consent' => 'accepted',
         ]);
 
         Postcard::create([
@@ -61,7 +63,7 @@ new class extends Component {
 
     {{-- Logo Top Right --}}
     <div class="absolute top-0 right-8 md:right-12 z-20">
-        <img src="{{ asset('rijksoverheid-logo.png') }}" alt="Rijksoverheid Logo"
+        <img src="{{ asset('rijksoverheid-logo.webp') }}" alt="Rijksoverheid Logo"
             class="h-16 md:h-34 w-auto opacity-80 mix-blend-multiply">
     </div>
 
@@ -109,12 +111,12 @@ new class extends Component {
                     <div class="pt-8 space-y-3 mb-2">
                         <button wire:click="resetForm" x-data="{ timeLeft: 15, timer: null }"
                             x-init="timer = setInterval(() => { if(timeLeft > 0) { timeLeft--; } else { clearInterval(timer); $wire.resetForm(); } }, 1000)"
-                            class="w-full inline-flex items-center justify-center px-6 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#23568b] hover:bg-[#1a4066] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#23568b] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 cursor-pointer">
+                            class="w-full inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-medium rounded-full text-white bg-[#23568b] hover:bg-[#1a4066] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#23568b] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 cursor-pointer">
                             Terug naar start (<span x-text="timeLeft"></span>s)
                         </button>
 
                         <a href="https://google.nl" target="_blank"
-                            class="group w-full inline-flex items-center justify-center gap-2 px-6 py-4 border border-gray-200 shadow-sm text-base font-medium rounded-full text-gray-700 bg-white hover:bg-[#23568b]/5 hover:border-[#23568b] hover:text-[#23568b] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#23568b] transition-all duration-300 cursor-pointer transform hover:scale-[1.02] active:scale-[0.98] hover:shadow-md">
+                            class="group w-full inline-flex items-center justify-center gap-2 px-6 py-2.5 border border-gray-200 shadow-sm text-sm font-medium rounded-full text-gray-700 bg-white hover:bg-[#23568b]/5 hover:border-[#23568b] hover:text-[#23568b] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#23568b] transition-all duration-300 cursor-pointer transform hover:scale-[1.02] active:scale-[0.98] hover:shadow-md">
                             Persoonlijk overzicht
                             <svg class="w-4 h-4 text-gray-400 group-hover:text-[#23568b] transition-colors" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
@@ -134,13 +136,13 @@ new class extends Component {
                         <label for="name" class="block text-sm font-medium text-gray-500 ml-1">Naam</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                 </svg>
                             </div>
                             <input type="text" id="name" wire:model="name"
-                                class="block w-full rounded-2xl border-transparent bg-gray-50 pl-10 p-4 text-gray-900 shadow-sm transition-all duration-200 placeholder:text-gray-400 focus:bg-white hover:bg-white focus:border-[#23568b] focus:ring-[#23568b] focus:ring-1 sm:text-sm">
+                                class="block w-full rounded-xl border-transparent bg-gray-50 pl-9 p-2.5 text-gray-900 shadow-sm transition-all duration-200 placeholder:text-gray-400 focus:bg-white hover:bg-white focus:border-[#23568b] focus:ring-[#23568b] focus:ring-1 text-sm">
                         </div>
                         @error('name') <span class="text-red-500 text-sm ml-1">{{ $message }}</span> @enderror
                     </div>
@@ -150,13 +152,13 @@ new class extends Component {
                         <label for="email" class="block text-sm font-medium text-gray-500 ml-1">E-mailadres</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                 </svg>
                             </div>
                             <input type="email" id="email" wire:model="email"
-                                class="block w-full rounded-2xl border-transparent bg-gray-50 pl-10 p-4 text-gray-900 shadow-sm transition-all duration-200 placeholder:text-gray-400 focus:bg-white hover:bg-white focus:border-[#23568b] focus:ring-[#23568b] focus:ring-1 sm:text-sm">
+                                class="block w-full rounded-xl border-transparent bg-gray-50 pl-9 p-2.5 text-gray-900 shadow-sm transition-all duration-200 placeholder:text-gray-400 focus:bg-white hover:bg-white focus:border-[#23568b] focus:ring-[#23568b] focus:ring-1 text-sm">
                         </div>
                         @error('email') <span class="text-red-500 text-sm ml-1">{{ $message }}</span> @enderror
                     </div>
@@ -166,14 +168,14 @@ new class extends Component {
                         <label for="message" class="block text-sm font-medium text-gray-500 ml-1">Boodschap aan
                             mijzelf</label>
                         <div class="relative">
-                            <div class="absolute top-4 left-3 flex items-start pointer-events-none">
-                                <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <div class="absolute top-3 left-3 flex items-start pointer-events-none">
+                                <svg class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                 </svg>
                             </div>
                             <textarea id="message" wire:model="message" rows="3"
-                                class="block w-full rounded-2xl border-transparent bg-gray-50 pl-10 p-4 text-gray-900 shadow-sm transition-all duration-200 placeholder:text-gray-400 focus:bg-white hover:bg-white focus:border-[#23568b] focus:ring-[#23568b] focus:ring-1 sm:text-sm"></textarea>
+                                class="block w-full rounded-xl border-transparent bg-gray-50 pl-9 p-2.5 text-gray-900 shadow-sm transition-all duration-200 placeholder:text-gray-400 focus:bg-white hover:bg-white focus:border-[#23568b] focus:ring-[#23568b] focus:ring-1 text-sm"></textarea>
                         </div>
                         @error('message') <span class="text-red-500 text-sm ml-1">{{ $message }}</span> @enderror
                     </div>
@@ -187,7 +189,7 @@ new class extends Component {
                                 <label class="cursor-pointer relative group">
                                     <input type="radio" value="{{ $option }}" wire:model="duration" class="peer sr-only">
                                     <div
-                                        class="w-full text-center rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-sm transition-all duration-200 hover:bg-[#23568b]/5 hover:border-[#23568b] hover:text-[#23568b] hover:shadow-md hover:scale-[1.02] peer-checked:border-[#23568b] peer-checked:bg-[#23568b] peer-checked:text-white peer-checked:shadow-md peer-focus:ring-2 peer-focus:ring-[#23568b] peer-focus:ring-offset-1">
+                                        class="w-full text-center rounded-lg border border-gray-200 bg-white px-2 py-2 text-sm font-medium text-gray-700 shadow-sm transition-all duration-200 hover:bg-[#23568b]/5 hover:border-[#23568b] hover:text-[#23568b] hover:shadow-md hover:scale-[1.02] peer-checked:border-[#23568b] peer-checked:bg-[#23568b] peer-checked:text-white peer-checked:shadow-md peer-focus:ring-2 peer-focus:ring-[#23568b] peer-focus:ring-offset-1">
                                         {{ $option }}
                                     </div>
                                 </label>
@@ -196,9 +198,22 @@ new class extends Component {
                         @error('duration') <span class="text-red-500 text-sm ml-1">{{ $message }}</span> @enderror
                     </div>
 
+                    {{-- Consent --}}
+                    <div class="flex items-start pt-2">
+                        <div class="flex h-5 items-center">
+                            <input id="consent" wire:model="consent" type="checkbox"
+                                class="h-4 w-4 rounded border-gray-300 text-[#23568b] focus:ring-[#23568b]">
+                        </div>
+                        <div class="ml-3 text-sm">
+                            <label for="consent" class="font-medium text-gray-700">Ik geef toestemming dat mijn e-mail adres
+                                eenmalig wordt gebruikt</label>
+                            @error('consent') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                        </div>
+                    </div>
+
                     <div class="pt-2">
                         <button type="submit"
-                            class="w-full flex justify-center py-4 px-4 border border-transparent rounded-full shadow-lg text-base font-semibold text-white bg-[#23568b] hover:bg-[#1a4066] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#23568b] transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] hover:shadow-2xl">
+                            class="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-full shadow-lg text-sm font-semibold text-white bg-[#23568b] hover:bg-[#1a4066] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#23568b] transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] hover:shadow-2xl">
                             Versturen
                         </button>
                     </div>

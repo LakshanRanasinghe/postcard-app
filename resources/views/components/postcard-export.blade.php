@@ -13,11 +13,11 @@ new class extends Component {
 ?>
 
 <div
-    class="bg-white rounded-[2.5rem] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.1)] border border-gray-100 flex flex-col md:flex-row w-full h-full p-8 md:p-12 lg:p-16 gap-10 md:gap-16 overflow-hidden relative justify-center items-center">
+    class="bg-white rounded-[2.5rem] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.1)] border border-[#23568b] flex flex-col md:flex-row w-full h-full p-8 md:p-12 lg:p-16 gap-10 md:gap-16 overflow-hidden relative justify-center items-center">
 
     {{-- Logo Top Right --}}
     <div class="absolute top-0 right-8 md:right-12 z-20">
-        <img src="{{ asset('rijksoverheid-logo.png') }}" alt="Rijksoverheid Logo"
+        <img src="{{ asset('rijksoverheid-logo.webp') }}" alt="Rijksoverheid Logo"
             class="h-16 md:h-34 w-auto opacity-80 mix-blend-multiply">
     </div>
 

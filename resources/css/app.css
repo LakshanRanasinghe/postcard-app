@@ -6,9 +6,17 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
-    --font-display: 'Playwrite NZ', cursive;
+    --font-sans: 'RijksSansVF-Regular', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'RijksSansVF-Regular', ui-sans-serif, system-ui, sans-serif;
+}
+
+@font-face {
+    font-family: 'RijksSansVF-Regular';
+    src: url('/fonts/RijksSansVF-Regular.woff2') format('woff2-variations'),
+         url('/fonts/RijksSansVF-Regular.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
 }
 
 @keyframes fade-up {

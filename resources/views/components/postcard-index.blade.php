@@ -17,7 +17,7 @@ new class extends Component {
 
     {{-- Logo Top Right --}}
     <div class="absolute top-0 right-8 md:top-0 md:right-12 z-20">
-        <img src="{{ asset('rijksoverheid-logo.png') }}" alt="Rijksoverheid Logo"
+        <img src="{{ asset('rijksoverheid-logo.webp') }}" alt="Rijksoverheid Logo"
             class="h-16 md:h-34 w-auto opacity-80 mix-blend-multiply">
     </div>
 
@@ -27,15 +27,15 @@ new class extends Component {
             @php
                 $cards = [
                     ['id' => 1, 'image' => 'images/option-1.png', 'title' => 'Option 1'],
-                    ['id' => 2, 'image' => 'images/option-2.jpeg', 'title' => 'Option 2'],
-                    ['id' => 3, 'image' => 'images/option-3.jpeg', 'title' => 'Option 3'],
-                    ['id' => 4, 'image' => 'images/option-4.jpeg', 'title' => 'Option 4'],
+                    ['id' => 2, 'image' => 'images/option-2.png', 'title' => 'Option 2'],
+                    ['id' => 3, 'image' => 'images/option-3.png', 'title' => 'Option 3'],
+                    ['id' => 4, 'image' => 'images/option-4.png', 'title' => 'Option 4'],
                 ];
             @endphp
 
             @foreach($cards as $card)
                 <button wire:click="selectCard({{ $card['id'] }})" style="animation-delay: {{ $loop->index * 100 }}ms"
-                    class="group relative aspect-square w-full cursor-pointer rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-1 focus:outline-none ring-offset-2 focus:ring-2 focus:ring-[#23568b] animate-fade-up">
+                    class="group relative aspect-square w-full cursor-pointer rounded-tr-[2.5rem] overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-1 hover:ring-4 hover:ring-[#23568b] focus:outline-none ring-offset-2 focus:ring-2 focus:ring-[#23568b] animate-fade-up">
                     <div class="absolute inset-0 bg-gray-50">
                         <img src="{{ asset($card['image']) }}" alt="{{ $card['title'] }}"
                             class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105">
@@ -46,7 +46,7 @@ new class extends Component {
                     </div>
 
                     @if($selectedCard === $card['id'])
-                        <div class="absolute inset-0 ring-4 ring-[#23568b] ring-inset rounded-3xl z-10"></div>
+                        <div class="absolute inset-0 ring-4 ring-[#23568b] ring-inset rounded-tr-[2.5rem] z-10"></div>
                         <div
                             class="absolute top-3 right-3 bg-[#23568b] text-white p-2 rounded-full shadow-lg z-20 animate-in fade-in zoom-in duration-300">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
