@@ -56,91 +56,146 @@ new class extends Component {
 };
 ?>
 
-<div class="flex w-full h-full p-8 md:p-12">
+<div
+    class="bg-white rounded-[2.5rem] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.1)] border border-gray-100 flex flex-col md:flex-row w-full h-full p-8 md:p-12 lg:p-16 gap-10 md:gap-16 overflow-hidden relative">
+
+    {{-- Logo Top Right --}}
+    <div class="absolute top-0 right-8 md:right-12 z-20">
+        <img src="{{ asset('rijksoverheid-logo.png') }}" alt="Rijksoverheid Logo"
+            class="h-16 md:h-34 w-auto opacity-80 mix-blend-multiply">
+    </div>
+
     {{-- Left Column: Image --}}
-    <div class="w-1/2 pr-4 flex items-center justify-center">
-        <div class="w-full h-full flex items-center justify-center">
-            <img src="{{ asset($this->cardImage) }}" alt="Selected Card" class="object-contain max-h-[90%] max-w-[90%]">
+    <div
+        class="w-full md:w-1/2 flex items-center justify-center order-2 md:order-1 p-4 md:p-8 bg-gray-50/50 rounded-[2rem]">
+        <div class="relative group w-full max-w-[400px]">
+            {{-- Card decoration --}}
+            <div
+                class="absolute inset-0 bg-white rounded-lg shadow-xl rotate-3 scale-105 opacity-40 transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110">
+            </div>
+            <div
+                class="absolute inset-0 bg-white rounded-lg shadow-xl -rotate-2 scale-105 opacity-40 transition-transform duration-500 group-hover:-rotate-4 group-hover:scale-110">
+            </div>
+
+            {{-- Main Image --}}
+            <div
+                class="relative bg-white p-3 rounded-lg shadow-2xl animate-fade-up transition-transform duration-500 group-hover:scale-[1.02]">
+                <img src="{{ asset($this->cardImage) }}" alt="Selected Card"
+                    class="w-full h-auto object-contain rounded-md">
+            </div>
         </div>
     </div>
 
     {{-- Right Column: Form or Success --}}
-    <div class="w-1/2 flex flex-col justify-center pl-8 md:pl-12">
-        <div class="w-full">
+    <div class="w-full md:w-1/2 flex flex-col justify-center order-1 md:order-2 pl-0">
+        <div class="w-full max-w-lg mx-auto md:mx-0">
             @if($submitted)
                 <div class="space-y-8 animate-fade-in">
-                    <div class="space-y-4">
-                        <h2 class="text-3xl font-bold text-gray-900">Beste {{ $name }},</h2>
-                        <p class="text-lg text-gray-700 leading-relaxed">
-                            Bedankt voor je boodschap. Over <span class="font-semibold">{{ $duration }}</span> ontvang je
+                    <div class="space-y-4 mb-2">
+                        <h2 class="font-display text-3xl md:text-4xl font-bold text-[#23568b] leading-tight">Beste
+                            {{ $name }},
+                        </h2>
+                        <p class="text-lg text-gray-700 leading-relaxed font-sans">
+                            Bedankt voor je boodschap. Over <span
+                                class="font-semibold text-[#23568b]">{{ $duration }}</span>
+                            ontvang je
                             dit bericht als reminder automatisch in je inbox.
                         </p>
-                        <p class="text-lg text-gray-700 leading-relaxed">
+                        <p class="text-lg text-gray-700 leading-relaxed font-sans">
                             Wil je in de tussentijd meer weten, dan kun je altijd het persoonlijk overzicht checken.
                         </p>
                     </div>
 
-                    <div class="pt-8 space-y-3">
+                    <div class="pt-8 space-y-3 mb-2">
                         <button wire:click="resetForm"
-                            class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
+                            class="w-full inline-flex items-center justify-center px-6 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#23568b] hover:bg-[#1a4066] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#23568b] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 cursor-pointer">
                             Terug naar start
                         </button>
 
-                        <button type="button"
-                            class="w-full inline-flex items-center justify-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
+                        <a href="https://google.nl" target="_blank"
+                            class="group w-full inline-flex items-center justify-center gap-2 px-6 py-4 border border-gray-200 shadow-sm text-base font-medium rounded-full text-gray-700 bg-white hover:bg-[#23568b]/5 hover:border-[#23568b] hover:text-[#23568b] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#23568b] transition-all duration-300 cursor-pointer transform hover:scale-[1.02] active:scale-[0.98] hover:shadow-md">
                             Persoonlijk overzicht
-                        </button>
+                            <svg class="w-4 h-4 text-gray-400 group-hover:text-[#23568b] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             @else
-                <h2 class="text-3xl font-bold text-gray-900 mb-6">Vul jouw gegevens in</h2>
+                <h2 class="font-display text-3xl md:text-4xl font-bold tracking-tight text-[#23568b] mb-8">Vul jouw gegevens
+                    in</h2>
 
-                <form wire:submit="submit" class="space-y-4">
+                <form wire:submit="submit" class="space-y-6">
                     {{-- Name --}}
-                    <div class="space-y-1">
-                        <label for="name" class="block text-sm font-medium text-gray-700">Naam:</label>
-                        <input type="text" id="name" wire:model="name"
-                            class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-50 p-2.5">
-                        @error('name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                    <div class="space-y-1 mb-2">
+                        <label for="name" class="block text-sm font-medium text-gray-500 ml-1">Naam</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                </svg>
+                            </div>
+                            <input type="text" id="name" wire:model="name"
+                                class="block w-full rounded-2xl border-transparent bg-gray-50 pl-10 p-4 text-gray-900 shadow-sm transition-all duration-200 placeholder:text-gray-400 focus:bg-white hover:bg-white focus:border-[#23568b] focus:ring-[#23568b] focus:ring-1 sm:text-sm">
+                        </div>
+                        @error('name') <span class="text-red-500 text-sm ml-1">{{ $message }}</span> @enderror
                     </div>
 
                     {{-- Email --}}
-                    <div class="space-y-1">
-                        <label for="email" class="block text-sm font-medium text-gray-700">Emailadres:</label>
-                        <input type="email" id="email" wire:model="email"
-                            class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-50 p-2.5">
-                        @error('email') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                    <div class="space-y-1 mb-2">
+                        <label for="email" class="block text-sm font-medium text-gray-500 ml-1">E-mailadres</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <input type="email" id="email" wire:model="email"
+                                class="block w-full rounded-2xl border-transparent bg-gray-50 pl-10 p-4 text-gray-900 shadow-sm transition-all duration-200 placeholder:text-gray-400 focus:bg-white hover:bg-white focus:border-[#23568b] focus:ring-[#23568b] focus:ring-1 sm:text-sm">
+                        </div>
+                        @error('email') <span class="text-red-500 text-sm ml-1">{{ $message }}</span> @enderror
                     </div>
 
                     {{-- Message --}}
-                    <div class="space-y-1">
-                        <label for="message" class="block text-sm font-medium text-gray-700">Boodschap aan mijzelf:</label>
-                        <textarea id="message" wire:model="message" rows="3"
-                            class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-50 p-2.5"></textarea>
-                        @error('message') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                    <div class="space-y-1 mb-2">
+                        <label for="message" class="block text-sm font-medium text-gray-500 ml-1">Boodschap aan
+                            mijzelf</label>
+                        <div class="relative">
+                            <div class="absolute top-4 left-3 flex items-start pointer-events-none">
+                                <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                </svg>
+                            </div>
+                            <textarea id="message" wire:model="message" rows="3"
+                                class="block w-full rounded-2xl border-transparent bg-gray-50 pl-10 p-4 text-gray-900 shadow-sm transition-all duration-200 placeholder:text-gray-400 focus:bg-white hover:bg-white focus:border-[#23568b] focus:ring-[#23568b] focus:ring-1 sm:text-sm"></textarea>
+                        </div>
+                        @error('message') <span class="text-red-500 text-sm ml-1">{{ $message }}</span> @enderror
                     </div>
 
                     {{-- Duration --}}
-                    <div class="space-y-2 pt-2">
-                        <label class="block text-base font-medium text-gray-900">Dit bericht ontvang ik graag over:</label>
-                        <div class="space-y-2">
+                    <div class="space-y-3 pt-2">
+                        <label class="block text-sm font-medium text-gray-500 ml-1">Dit bericht ontvang ik graag
+                            over</label>
+                        <div class="grid grid-cols-2 gap-3">
                             @foreach(['1 maand', '2 maanden', '5 maanden', '7 maanden'] as $option)
-                                <div class="flex items-center">
-                                    <input type="radio" id="duration-{{ $loop->index }}" name="duration" value="{{ $option }}"
-                                        wire:model="duration" class="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-500">
-                                    <label for="duration-{{ $loop->index }}"
-                                        class="ml-3 block text-sm font-medium text-gray-700">
+                                <label class="cursor-pointer relative group">
+                                    <input type="radio" value="{{ $option }}" wire:model="duration" class="peer sr-only">
+                                    <div
+                                        class="w-full text-center rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-sm transition-all duration-200 hover:bg-[#23568b]/5 hover:border-[#23568b] hover:text-[#23568b] hover:shadow-md hover:scale-[1.02] peer-checked:border-[#23568b] peer-checked:bg-[#23568b] peer-checked:text-white peer-checked:shadow-md peer-focus:ring-2 peer-focus:ring-[#23568b] peer-focus:ring-offset-1">
                                         {{ $option }}
-                                    </label>
-                                </div>
+                                    </div>
+                                </label>
                             @endforeach
                         </div>
-                        @error('duration') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        @error('duration') <span class="text-red-500 text-sm ml-1">{{ $message }}</span> @enderror
                     </div>
 
-                    <div class="pt-4 pb-2">
+                    <div class="pt-2">
                         <button type="submit"
-                            class="w-full flex justify-center py-3 px-4 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
+                            class="w-full flex justify-center py-4 px-4 border border-transparent rounded-full shadow-lg text-base font-semibold text-white bg-[#23568b] hover:bg-[#1a4066] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#23568b] transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] hover:shadow-2xl">
                             Versturen
                         </button>
                     </div>
