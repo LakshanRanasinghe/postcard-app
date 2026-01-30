@@ -13,7 +13,7 @@ new class extends Component {
 ?>
 
 <div
-    class="bg-white rounded-[2.5rem] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.1)] border border-gray-100 flex flex-col md:flex-row w-full h-full p-8 md:p-12 lg:p-16 gap-10 md:gap-16 overflow-hidden relative">
+    class="bg-white rounded-[2.5rem] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.1)] border border-gray-100 flex flex-col md:flex-row w-full h-full p-8 md:p-12 lg:p-16 gap-5 overflow-hidden relative">
 
     {{-- Logo Top Right --}}
     <div class="absolute top-0 right-8 md:top-0 md:right-12 z-20">
@@ -62,7 +62,7 @@ new class extends Component {
 
     {{-- Sidebar Column (Text) --}}
     <div
-        class="w-full md:w-[40%] flex flex-col justify-center pl-0 md:pl-4 lg:pl-6 order-1 md:order-2 text-center md:text-left relative z-10">
+        class="w-full md:w-[40%] flex flex-col justify-center pl-0 order-1 md:order-2 text-center md:text-left relative z-10">
         <div class="w-full">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50/50 border border-blue-100 mb-6 animate-fade-up"
                 style="animation-delay: 300ms">
@@ -72,12 +72,7 @@ new class extends Component {
 
             <h1 class="font-display text-3xl md:text-4xl font-bold text-black leading-[1.1] mb-6 tracking-tight animate-fade-up"
                 style="animation-delay: 500ms">
-                Kies jouw kaart <br>
-                en ontvang <br>
-                deze na een <br>
-                door jou <br>
-                gewenste <br>
-                periode
+                Kies jouw kaart en ontvang deze na een door jou gewenste periode
             </h1>
 
             {{-- Decorative element --}}
