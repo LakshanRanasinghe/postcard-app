@@ -107,16 +107,19 @@ new class extends Component {
                     </div>
 
                     <div class="pt-8 space-y-3 mb-2">
-                        <button wire:click="resetForm"
+                        <button wire:click="resetForm" x-data="{ timeLeft: 15, timer: null }"
+                            x-init="timer = setInterval(() => { if(timeLeft > 0) { timeLeft--; } else { clearInterval(timer); $wire.resetForm(); } }, 1000)"
                             class="w-full inline-flex items-center justify-center px-6 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#23568b] hover:bg-[#1a4066] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#23568b] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 cursor-pointer">
-                            Terug naar start
+                            Terug naar start (<span x-text="timeLeft"></span>s)
                         </button>
 
                         <a href="https://google.nl" target="_blank"
                             class="group w-full inline-flex items-center justify-center gap-2 px-6 py-4 border border-gray-200 shadow-sm text-base font-medium rounded-full text-gray-700 bg-white hover:bg-[#23568b]/5 hover:border-[#23568b] hover:text-[#23568b] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#23568b] transition-all duration-300 cursor-pointer transform hover:scale-[1.02] active:scale-[0.98] hover:shadow-md">
                             Persoonlijk overzicht
-                            <svg class="w-4 h-4 text-gray-400 group-hover:text-[#23568b] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            <svg class="w-4 h-4 text-gray-400 group-hover:text-[#23568b] transition-colors" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                             </svg>
                         </a>
                     </div>
