@@ -8,6 +8,7 @@
 @theme {
     --font-sans: 'RijksSansVF-Regular', ui-sans-serif, system-ui, sans-serif;
     --font-display: 'RijksSansVF-Regular', ui-sans-serif, system-ui, sans-serif;
+    --color-theme: #23568b;
 }
 
 @font-face {

@@ -202,11 +202,11 @@ new class extends Component {
                     <div class="flex items-start pt-2">
                         <div class="flex h-5 items-center">
                             <input id="consent" wire:model="consent" type="checkbox"
-                                class="h-4 w-4 rounded border-gray-300 text-[#23568b] focus:ring-[#23568b]">
+                                class="h-4 w-4 rounded border-gray-300 text-theme focus:ring-theme">
                         </div>
                         <div class="ml-3 text-sm">
-                            <label for="consent" class="font-medium text-gray-700">Ik geef toestemming dat mijn e-mail adres
-                                eenmalig wordt gebruikt</label>
+                            <label for="consent" class="font-medium text-gray-700">Ik geef toestemming dat mijn e-mail
+                                adres eenmalig wordt gebruikt, daarna worden mijn gegevens verwijderd.</label>
                             @error('consent') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
                         </div>
                     </div>
