@@ -144,7 +144,7 @@ new class extends Component {
                             <input type="text" id="name" wire:model="name"
                                 class="block w-full rounded-xl border-transparent bg-gray-50 pl-9 p-2.5 text-gray-900 shadow-sm transition-all duration-200 placeholder:text-gray-400 focus:bg-white hover:bg-white focus:border-[#23568b] focus:ring-[#23568b] focus:ring-1 text-sm">
                         </div>
-                        @error('name') <span class="text-red-500 text-sm ml-1">{{ $message }}</span> @enderror
+                        @error('name') <span class="text-red-500 text-sm ml-1">Het naamveld is verplicht.</span> @enderror
                     </div>
 
                     {{-- Email --}}
@@ -160,7 +160,7 @@ new class extends Component {
                             <input type="email" id="email" wire:model="email"
                                 class="block w-full rounded-xl border-transparent bg-gray-50 pl-9 p-2.5 text-gray-900 shadow-sm transition-all duration-200 placeholder:text-gray-400 focus:bg-white hover:bg-white focus:border-[#23568b] focus:ring-[#23568b] focus:ring-1 text-sm">
                         </div>
-                        @error('email') <span class="text-red-500 text-sm ml-1">{{ $message }}</span> @enderror
+                        @error('email') <span class="text-red-500 text-sm ml-1">Het e-mailveld is verplicht.</span> @enderror
                     </div>
 
                     {{-- Message --}}
@@ -177,7 +177,7 @@ new class extends Component {
                             <textarea id="message" wire:model="message" rows="3"
                                 class="block w-full rounded-xl border-transparent bg-gray-50 pl-9 p-2.5 text-gray-900 shadow-sm transition-all duration-200 placeholder:text-gray-400 focus:bg-white hover:bg-white focus:border-[#23568b] focus:ring-[#23568b] focus:ring-1 text-sm"></textarea>
                         </div>
-                        @error('message') <span class="text-red-500 text-sm ml-1">{{ $message }}</span> @enderror
+                        @error('message') <span class="text-red-500 text-sm ml-1">Het boodschapveld is verplicht.</span> @enderror
                     </div>
 
                     {{-- Duration --}}
@@ -195,7 +195,7 @@ new class extends Component {
                                 </label>
                             @endforeach
                         </div>
-                        @error('duration') <span class="text-red-500 text-sm ml-1">{{ $message }}</span> @enderror
+                        @error('duration') <span class="text-red-500 text-sm ml-1">Het duurveld is verplicht.</span> @enderror
                     </div>
 
                     {{-- Consent --}}
@@ -207,7 +207,7 @@ new class extends Component {
                         <div class="ml-3 text-sm">
                             <label for="consent" class="font-medium text-gray-700">Ik geef toestemming dat mijn e-mail
                                 adres eenmalig wordt gebruikt, daarna worden mijn gegevens verwijderd.</label>
-                            @error('consent') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                            @error('consent') <p class="text-red-500 text-xs mt-1">Het toestemmingveld is verplicht.</p> @enderror
                         </div>
                     </div>
 
