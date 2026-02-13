@@ -23,6 +23,11 @@ new class extends Component {
 
     {{-- Main Content Column (Images) --}}
     <div class="w-full md:w-[60%] flex flex-col justify-center order-2 md:order-1">
+        <span
+            class="font-display text-md md:text-md font-semibold text-[#02588e] leading-[1.1] mb-4 tracking-tight animate-fade-up rounded-r-2xl py-2 px-2 bg-[#dcf0fb] w-full max-w-xl mx-auto md:ml-0"
+            style="animation-delay: 500ms;">
+            Kies één van de kaarten die voor jou nu van toepassing is.
+        </span>
         <div class="grid grid-cols-2 gap-5 w-full max-w-xl mx-auto md:ml-0">
             @php
                 $cards = [
