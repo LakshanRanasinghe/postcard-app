@@ -69,7 +69,19 @@ new class extends Component {
 
     {{-- Left Column: Image --}}
     <div
-        class="w-full md:w-1/2 flex items-center justify-center order-2 md:order-1 p-4 md:p-8 bg-gray-50/50 rounded-[2rem]">
+        class="w-full md:w-1/2 flex flex-col items-center justify-center order-2 md:order-1 p-4 md:p-8 bg-gray-50/50 rounded-[2rem] relative">
+
+        <div class="w-full max-w-[400px] mb-8 relative z-50">
+            <a href="{{ route('home') }}"
+                class="inline-flex items-center px-4 py-2 bg-[#23568b] border border-transparent rounded-full text-sm font-medium text-white hover:bg-[#1a4066] transition-all duration-300 shadow-sm hover:shadow-md group">
+                <svg class="w-4 h-4 mr-2 text-white/80 group-hover:text-white transition-colors transform group-hover:-translate-x-1"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Terug
+            </a>
+        </div>
         <div class="relative group w-full max-w-[400px]">
             {{-- Card decoration --}}
             <div
@@ -116,14 +128,14 @@ new class extends Component {
                         </button>
 
                         <!-- <a href="https://google.nl" target="_blank"
-                                                                        class="group w-full inline-flex items-center justify-center gap-2 px-6 py-2.5 border border-gray-200 shadow-sm text-sm font-medium rounded-full text-gray-700 bg-white hover:bg-[#23568b]/5 hover:border-[#23568b] hover:text-[#23568b] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#23568b] transition-all duration-300 cursor-pointer transform hover:scale-[1.02] active:scale-[0.98] hover:shadow-md">
-                                                                        Persoonlijk overzicht
-                                                                        <svg class="w-4 h-4 text-gray-400 group-hover:text-[#23568b] transition-colors" fill="none"
-                                                                            stroke="currentColor" viewBox="0 0 24 24">
-                                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                                                                        </svg>
-                                                                    </a> -->
+                                                                                                class="group w-full inline-flex items-center justify-center gap-2 px-6 py-2.5 border border-gray-200 shadow-sm text-sm font-medium rounded-full text-gray-700 bg-white hover:bg-[#23568b]/5 hover:border-[#23568b] hover:text-[#23568b] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#23568b] transition-all duration-300 cursor-pointer transform hover:scale-[1.02] active:scale-[0.98] hover:shadow-md">
+                                                                                                Persoonlijk overzicht
+                                                                                                <svg class="w-4 h-4 text-gray-400 group-hover:text-[#23568b] transition-colors" fill="none"
+                                                                                                    stroke="currentColor" viewBox="0 0 24 24">
+                                                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                                                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                                                                                </svg>
+                                                                                            </a> -->
 
                         <div class="grid grid-cols-2 gap-8 mt-8">
                             <div class="flex flex-col items-center space-y-4 relative group">
@@ -136,17 +148,18 @@ new class extends Component {
                                     <svg class="absolute -right-14 -bottom-6 w-16 h-16 text-[#23568b] transform -rotate-12 hidden md:block opacity-90"
                                         viewBox="0 0 473.654 473.654" xmlns="http://www.w3.org/2000/svg"
                                         fill="currentColor">
-                                        <path d="M143.386,111.189c27.011-17.31,54.018-34.625,81.029-51.939c2.891-1.855,5.688-1.249,7.632,0.471
-                                                                    c1.687,1.088,2.887,2.921,2.887,5.55c0,11.286,0,22.572,0,33.858
-                                                                    c81.47,3.841,145.372,69.122,146.958,151.221
-                                                                    c1.608,83.594-70.248,149.852-151.415,151.415
-                                                                    c-25.336,0.49-25.291-38.783,0-39.266
-                                                                    c62.073-1.197,110.953-50.077,112.15-112.15
-                                                                    c1.167-60.54-49.288-108.534-107.692-111.955
-                                                                    c0,10.25,0,20.5,0,30.751
-                                                                    c0,5.172-5.987,9.035-10.564,6.099
-                                                                    c-27.011-17.31-54.018-34.625-81.029-51.939
-                                                                    C138.794,120.396,138.869,114.087,143.386,111.189z" />
+                                        <path
+                                            d="M143.386,111.189c27.011-17.31,54.018-34.625,81.029-51.939c2.891-1.855,5.688-1.249,7.632,0.471
+                                                                                            c1.687,1.088,2.887,2.921,2.887,5.55c0,11.286,0,22.572,0,33.858
+                                                                                            c81.47,3.841,145.372,69.122,146.958,151.221
+                                                                                            c1.608,83.594-70.248,149.852-151.415,151.415
+                                                                                            c-25.336,0.49-25.291-38.783,0-39.266
+                                                                                            c62.073-1.197,110.953-50.077,112.15-112.15
+                                                                                            c1.167-60.54-49.288-108.534-107.692-111.955
+                                                                                            c0,10.25,0,20.5,0,30.751
+                                                                                            c0,5.172-5.987,9.035-10.564,6.099
+                                                                                            c-27.011-17.31-54.018-34.625-81.029-51.939
+                                                                                            C138.794,120.396,138.869,114.087,143.386,111.189z" />
                                     </svg>
                                 </div>
                                 <span
@@ -165,17 +178,18 @@ new class extends Component {
                                     <svg class="absolute -right-14 -bottom-6 w-16 h-16 text-[#23568b] transform -rotate-12 hidden md:block opacity-90"
                                         viewBox="0 0 473.654 473.654" xmlns="http://www.w3.org/2000/svg"
                                         fill="currentColor">
-                                        <path d="M143.386,111.189c27.011-17.31,54.018-34.625,81.029-51.939c2.891-1.855,5.688-1.249,7.632,0.471
-                                                                    c1.687,1.088,2.887,2.921,2.887,5.55c0,11.286,0,22.572,0,33.858
-                                                                    c81.47,3.841,145.372,69.122,146.958,151.221
-                                                                    c1.608,83.594-70.248,149.852-151.415,151.415
-                                                                    c-25.336,0.49-25.291-38.783,0-39.266
-                                                                    c62.073-1.197,110.953-50.077,112.15-112.15
-                                                                    c1.167-60.54-49.288-108.534-107.692-111.955
-                                                                    c0,10.25,0,20.5,0,30.751
-                                                                    c0,5.172-5.987,9.035-10.564,6.099
-                                                                    c-27.011-17.31-54.018-34.625-81.029-51.939
-                                                                    C138.794,120.396,138.869,114.087,143.386,111.189z" />
+                                        <path
+                                            d="M143.386,111.189c27.011-17.31,54.018-34.625,81.029-51.939c2.891-1.855,5.688-1.249,7.632,0.471
+                                                                                            c1.687,1.088,2.887,2.921,2.887,5.55c0,11.286,0,22.572,0,33.858
+                                                                                            c81.47,3.841,145.372,69.122,146.958,151.221
+                                                                                            c1.608,83.594-70.248,149.852-151.415,151.415
+                                                                                            c-25.336,0.49-25.291-38.783,0-39.266
+                                                                                            c62.073-1.197,110.953-50.077,112.15-112.15
+                                                                                            c1.167-60.54-49.288-108.534-107.692-111.955
+                                                                                            c0,10.25,0,20.5,0,30.751
+                                                                                            c0,5.172-5.987,9.035-10.564,6.099
+                                                                                            c-27.011-17.31-54.018-34.625-81.029-51.939
+                                                                                            C138.794,120.396,138.869,114.087,143.386,111.189z" />
                                     </svg>
                                 </div>
                                 <span
@@ -190,7 +204,23 @@ new class extends Component {
                 <h2 class="font-display text-3xl md:text-4xl font-bold tracking-tight text-[#23568b] mb-8">Vul jouw gegevens
                     in</h2>
 
-                <form wire:submit="submit" class="space-y-6">
+                <form wire:submit="submit" class="space-y-6" x-data="{
+                                            timeLeft: 60,
+                                            hasInteracted: false,
+                                            init() {
+                                                let timer = setInterval(() => {
+                                                    if (!this.hasInteracted) {
+                                                        this.timeLeft--;
+                                                        if (this.timeLeft <= 0) {
+                                                            clearInterval(timer);
+                                                            window.location.href = '{{ route('home') }}';
+                                                        }
+                                                    } else {
+                                                        clearInterval(timer);
+                                                    }
+                                                }, 1000);
+                                            }
+                                        }" @input.capture="hasInteracted = true">
                     {{-- Name --}}
                     <div class="space-y-1 mb-2">
                         <label for="name" class="block text-sm font-medium text-gray-500 ml-1">Naam</label>
@@ -277,7 +307,7 @@ new class extends Component {
 
                     <div class="pt-2">
                         <button type="submit"
-                            class="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-full shadow-lg text-sm font-semibold text-white bg-[#23568b] hover:bg-[#1a4066] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#23568b] transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] hover:shadow-2xl">
+                            class="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-full shadow-lg text-sm font-semibold text-white bg-[#23568b] hover:bg-[#1a4066] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#23568b] transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] hover:shadow-2xl cursor-pointer">
                             Versturen
                         </button>
                     </div>
