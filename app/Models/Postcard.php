@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Postcard extends Model
 {
     protected $fillable = ['card_id', 'name', 'email', 'message', 'duration'];
+
+    public function emailLog()
+    {
+        return $this->hasOne(PostcardEmailLog::class);
+    }
 }
